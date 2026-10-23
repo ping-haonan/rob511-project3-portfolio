@@ -1,0 +1,19 @@
+WEBVTT
+
+00:00.000 --> 00:05.400
+The live desk arm moves through home, reach_left, lift, and reach_right.
+
+00:05.400 --> 00:10.800
+The cycle repeats. The highlighted strip and right panel show the current FSM state.
+
+00:10.800 --> 00:16.300
+Yaw, shoulder, elbow, and extension values update as the servo approaches each target.
+
+00:16.300 --> 00:21.700
+Colored axes show the link frames. The external viewer uses live /xform_world matrices.
+
+00:21.700 --> 00:27.100
+Arrival requires all target errors within tolerance and at least 1.3 seconds in the state.
+
+00:27.100 --> 00:30.100
+The FSM returns home and begins another cycle. This is a kinematic demonstration.

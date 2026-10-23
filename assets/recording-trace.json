@@ -1,0 +1,249 @@
+{
+  "duration_seconds": 30,
+  "mime": "video/mp4;codecs=avc1.42E01E",
+  "width": 1600,
+  "height": 900,
+  "source": "Live external viewer canvas; actual make demo runtime, /xform_world and /fsm/status.",
+  "transitions": [
+    {
+      "seconds": 0,
+      "state": "reach_right",
+      "joints": {
+        "yaw": -0.7384145859713015,
+        "shoulder": -0.569810196633589,
+        "elbow": 0.5891161735352083,
+        "extension": 0.17712139995875648
+      }
+    },
+    {
+      "seconds": 0.185,
+      "state": "home",
+      "joints": {
+        "yaw": 0,
+        "shoulder": -0.2654643689681126,
+        "elbow": 0.3981965534521689,
+        "extension": 0.09015780157293522
+      }
+    },
+    {
+      "seconds": 1.385,
+      "state": "reach_left",
+      "joints": {
+        "yaw": 0,
+        "shoulder": -0.7962572752404576,
+        "elbow": 1.1943859128606864,
+        "extension": 0.020491232624689947
+      }
+    },
+    {
+      "seconds": 2.786,
+      "state": "lift",
+      "joints": {
+        "yaw": 0.8960344518210912,
+        "shoulder": -0.401745974795788,
+        "elbow": 0.20438142805097476,
+        "extension": 0.2191209315231761
+      }
+    },
+    {
+      "seconds": 4.086,
+      "state": "reach_right",
+      "joints": {
+        "yaw": 0.8999819154428432,
+        "shoulder": -1.0968156697992184,
+        "elbow": 0.29956393934668135,
+        "extension": 0.10054324123614408
+      }
+    },
+    {
+      "seconds": 5.386,
+      "state": "home",
+      "joints": {
+        "yaw": -0.7922493227719855,
+        "shoulder": -0.5524930804977007,
+        "elbow": 0.5986302307614999,
+        "extension": 0.17963773515166928
+      }
+    },
+    {
+      "seconds": 6.786,
+      "state": "reach_left",
+      "joints": {
+        "yaw": -0.0037173125582861083,
+        "shoulder": -0.7988386729358009,
+        "elbow": 1.1971783132770095,
+        "extension": 0.020749036118553357
+      }
+    },
+    {
+      "seconds": 8.086,
+      "state": "lift",
+      "joints": {
+        "yaw": 0.8959428431704409,
+        "shoulder": -0.401790550013049,
+        "elbow": 0.20447674150730524,
+        "extension": 0.2191054808869165
+      }
+    },
+    {
+      "seconds": 9.486,
+      "state": "reach_right",
+      "joints": {
+        "yaw": 0.8999818043743215,
+        "shoulder": -1.096868654988987,
+        "elbow": 0.29957159520123594,
+        "extension": 0.1005341668654965
+      }
+    },
+    {
+      "seconds": 10.786,
+      "state": "home",
+      "joints": {
+        "yaw": -0.7924426911123773,
+        "shoulder": -0.5524311174014193,
+        "elbow": 0.5986644384970252,
+        "extension": 0.1796467327794542
+      }
+    },
+    {
+      "seconds": 12.186,
+      "state": "reach_left",
+      "joints": {
+        "yaw": -0.0035934330277699517,
+        "shoulder": -0.7988773671467282,
+        "elbow": 1.1972731667643446,
+        "extension": 0.02072393858733174
+      }
+    },
+    {
+      "seconds": 13.586,
+      "state": "lift",
+      "joints": {
+        "yaw": 0.8960794497395427,
+        "shoulder": -0.4017306663688531,
+        "elbow": 0.20432701194009772,
+        "extension": 0.21913537240763642
+      }
+    },
+    {
+      "seconds": 14.886,
+      "state": "reach_right",
+      "joints": {
+        "yaw": 0.8999826885385019,
+        "shoulder": -1.096916743344344,
+        "elbow": 0.29957754928793995,
+        "extension": 0.10052605049686161
+      }
+    },
+    {
+      "seconds": 16.286,
+      "state": "home",
+      "joints": {
+        "yaw": -0.7922838540140191,
+        "shoulder": -0.5524824308284282,
+        "elbow": 0.5986363958275638,
+        "extension": 0.1796392712698881
+      }
+    },
+    {
+      "seconds": 17.586,
+      "state": "reach_left",
+      "joints": {
+        "yaw": -0.0036640987449356884,
+        "shoulder": -0.7988552981233226,
+        "elbow": 1.1972188558227777,
+        "extension": 0.02073828849412864
+      }
+    },
+    {
+      "seconds": 18.985,
+      "state": "lift",
+      "joints": {
+        "yaw": 0.8960060619684886,
+        "shoulder": -0.4017628268584057,
+        "elbow": 0.20440742342153728,
+        "extension": 0.21911931996754916
+      }
+    },
+    {
+      "seconds": 20.285,
+      "state": "reach_right",
+      "joints": {
+        "yaw": 0.8999823012001914,
+        "shoulder": -1.096905820809229,
+        "elbow": 0.29957638955269245,
+        "extension": 0.10052786722798508
+      }
+    },
+    {
+      "seconds": 21.686,
+      "state": "home",
+      "joints": {
+        "yaw": -0.7923076387741598,
+        "shoulder": -0.552474729958782,
+        "elbow": 0.5986405935340031,
+        "extension": 0.1796403913427577
+      }
+    },
+    {
+      "seconds": 22.986,
+      "state": "reach_left",
+      "joints": {
+        "yaw": -0.003381079076695016,
+        "shoulder": -0.7989437152053911,
+        "elbow": 1.1974337699054352,
+        "extension": 0.020681246476178753
+      }
+    },
+    {
+      "seconds": 24.386,
+      "state": "lift",
+      "joints": {
+        "yaw": 0.8961095254272814,
+        "shoulder": -0.40171807935311066,
+        "elbow": 0.20429551914431732,
+        "extension": 0.2191416196769995
+      }
+    },
+    {
+      "seconds": 25.686,
+      "state": "reach_right",
+      "joints": {
+        "yaw": 0.8999828903991558,
+        "shoulder": -1.0969290828880278,
+        "elbow": 0.29957910906861246,
+        "extension": 0.10052396321284568
+      }
+    },
+    {
+      "seconds": 27.085,
+      "state": "home",
+      "joints": {
+        "yaw": -0.7925769293860824,
+        "shoulder": -0.5523881965083366,
+        "elbow": 0.5986881953342741,
+        "extension": 0.17965296342891612
+      }
+    },
+    {
+      "seconds": 28.386,
+      "state": "reach_left",
+      "joints": {
+        "yaw": -0.0037024770667667354,
+        "shoulder": -0.7988432958494026,
+        "elbow": 1.1971910068484135,
+        "extension": 0.0207458095407783
+      }
+    },
+    {
+      "seconds": 29.785,
+      "state": "lift",
+      "joints": {
+        "yaw": 0.8959184859115832,
+        "shoulder": -0.40180135008190276,
+        "elbow": 0.20450374901760252,
+        "extension": 0.2191000812699163
+      }
+    }
+  ]
+}

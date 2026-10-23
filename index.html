@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Haonan Ping's ROB 511 Project 3 portfolio: a custom desk arm, finite-state choreography, and an external viewer driven by live forward-kinematics transforms.">
+  <meta name="theme-color" content="#f6f4ef">
+  <title>Desk Arm — Haonan Ping · ROB 511</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="identity" href="#main" aria-label="Haonan Ping portfolio home"><span class="monogram">HP</span><span>Haonan Ping<span class="identity-sub">Robotics portfolio</span></span></a>
+    <nav aria-label="Page sections"><a href="#demo">Demo</a><a href="#robot">Robot</a><a href="#choreography">Choreography</a><a href="#implementation">Implementation</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="title">
+      <div class="eyebrow"><span class="marker"></span> ROB 511 · FALL 2026 · PROJECT 03</div>
+      <div class="hero-line"><h1 id="title">From joint targets<br>to <em>motion.</em></h1><div class="hero-note"><span class="note-label">FORWARD KINEMATICS</span><p>A custom desk arm follows a four-state choreography. Every link on screen is placed using transforms published by the running robot system.</p><a class="text-link" href="#demo">Watch the demonstration <span aria-hidden="true">↘</span></a></div></div>
+      <div class="project-facts"><span><b>04</b> moving joints</span><span><b>06</b> link frames</span><span><b>04</b> FSM states</span><span class="course">University of Michigan</span></div>
+    </section>
+
+    <section id="demo" class="demo-section wrap" aria-labelledby="demo-title">
+      <div class="section-top"><h2 id="demo-title"><span class="section-number">01 /</span> The demonstration</h2><span class="small-label">30 SECONDS · REAL RUNTIME CAPTURE</span></div>
+      <div class="video-shell"><video id="demo-video" controls playsinline preload="metadata" poster="assets/poster.png" aria-label="Desk arm executing its four-state choreography, with live joint values and FSM state displayed">
+        <source src="assets/choreography.mp4" type="video/mp4">
+        <track kind="captions" src="assets/captions.vtt" srclang="en" label="English descriptions">
+        Your browser cannot play this video. <a href="assets/choreography.mp4">Download the demonstration.</a>
+      </video></div>
+      <div class="video-caption"><p>Recorded from the external viewer connected to <code>make demo</code>. The recording shows the robot, current joint values, and active FSM state through repeated cycles. No audio.</p><a href="assets/choreography.mp4" download>Download video <span aria-hidden="true">↗</span></a></div>
+      <details class="transcript"><summary>Read the visual description</summary><p>A gray base supports a blue turntable and two gold arm segments. A silver sliding segment ends in a green spherical tool. The robot moves from its home pose to reach_left, lifts and retracts, sweeps toward reach_right, and returns home. Colored coordinate axes move with each link. The right panel reports joint positions and the current state; the strip below highlights the state sequence.</p></details>
+    </section>
+
+    <section id="robot" class="robot-section wrap section-space" aria-labelledby="robot-title">
+      <div class="section-top"><h2 id="robot-title"><span class="section-number">02 /</span> A small, expressive robot</h2></div>
+      <div class="two-columns"><div class="prose"><p class="lead">The <code>desk_arm</code> is a custom URDF model with four moving joints and a fixed tool mount.</p><p>A continuous yaw joint turns the arm about the vertical axis. Two revolute joints bend the shoulder and elbow, while a prismatic joint extends the tool. Boxes, a cylinder, and a sphere supply the visual geometry; no external mesh assets are needed.</p><p>The model has six links: base, turntable, upper_arm, forearm, slide, and tool. The upper arm and forearm are 0.65 m and 0.50 m long.</p></div><div class="joint-list" aria-label="Robot joint types and ranges">
+        <div><span class="joint-id">J1</span><strong>Yaw</strong><span>Continuous · about Z</span></div>
+        <div><span class="joint-id">J2</span><strong>Shoulder</strong><span>Revolute · −1.3 to 1.3 rad</span></div>
+        <div><span class="joint-id">J3</span><strong>Elbow</strong><span>Revolute · −1.6 to 1.6 rad</span></div>
+        <div><span class="joint-id">J4</span><strong>Extension</strong><span>Prismatic · 0 to 0.25 m</span></div>
+        <div class="fixed-joint"><span class="joint-id">—</span><strong>Tool mount</strong><span>Fixed</span></div>
+      </div></div>
+    </section>
+
+    <section id="choreography" class="choreography-section section-space" aria-labelledby="choreo-title"><div class="wrap">
+      <div class="section-top"><h2 id="choreo-title"><span class="section-number">03 /</span> Four states, one continuous loop</h2><span class="small-label">FINITE-STATE MACHINE · FSM</span></div>
+      <p class="section-intro">Each state specifies an absolute joint target. The FSM issues that target on entry, checks the reported joint positions, and follows its named transition when the arrival conditions are satisfied.</p>
+      <div class="state-picker" role="group" aria-label="Explore a choreography state">
+        <button type="button" class="state-button active" data-state="0" aria-pressed="true"><span>01</span><b>home</b><span aria-hidden="true">→</span></button>
+        <button type="button" class="state-button" data-state="1" aria-pressed="false"><span>02</span><b>reach_left</b><span aria-hidden="true">→</span></button>
+        <button type="button" class="state-button" data-state="2" aria-pressed="false"><span>03</span><b>lift</b><span aria-hidden="true">→</span></button>
+        <button type="button" class="state-button" data-state="3" aria-pressed="false"><span>04</span><b>reach_right</b><span aria-hidden="true">↻</span></button>
+      </div>
+      <div class="state-description" aria-live="polite"><span id="state-counter">STATE 01</span><h3 id="state-name">home</h3><p id="state-description">Return to the centered, bent-arm pose with the extension nearly retracted.</p><div id="state-edge">On arrival: <code>reach</code> → <code>reach_left</code></div></div>
+      <div class="table-scroll"><table><caption>Joint targets configured in the choreography JSON</caption><thead><tr><th scope="col">State</th><th scope="col">Yaw <span>rad</span></th><th scope="col">Shoulder <span>rad</span></th><th scope="col">Elbow <span>rad</span></th><th scope="col">Extension <span>m</span></th></tr></thead><tbody>
+        <tr class="selected" data-row="0"><th scope="row">home</th><td>0.00</td><td>−0.80</td><td>1.20</td><td>0.02</td></tr>
+        <tr data-row="1"><th scope="row">reach_left</th><td>0.90</td><td>−0.40</td><td>0.20</td><td>0.22</td></tr>
+        <tr data-row="2"><th scope="row">lift</th><td>0.90</td><td>−1.10</td><td>0.30</td><td>0.10</td></tr>
+        <tr data-row="3"><th scope="row">reach_right</th><td>−0.80</td><td>−0.55</td><td>0.60</td><td>0.18</td></tr>
+      </tbody></table></div>
+      <p class="condition-note"><strong>Transition condition.</strong> Every target joint must be within 0.02 of its target in its native unit (rad or m), and at least 1.3 s must have elapsed since state entry. This is a minimum time in the state, not an extra 1.3 s wait after arrival. The final transition returns to <code>home</code>.</p>
+    </div></section>
+
+    <section id="implementation" class="implementation-section wrap section-space" aria-labelledby="implementation-title">
+      <div class="section-top"><h2 id="implementation-title"><span class="section-number">04 /</span> How the motion reaches the screen</h2></div>
+      <ol class="pipeline" aria-label="Runtime data flow">
+        <li><span class="pipeline-no">1</span><h3>Load</h3><p>URDF + action JSON</p></li>
+        <li><span class="pipeline-no">2</span><h3>Command</h3><p>FSM → joint targets</p></li>
+        <li><span class="pipeline-no">3</span><h3>Update</h3><p>Servo → joint states</p></li>
+        <li><span class="pipeline-no">4</span><h3>Transform</h3><p>FK → world poses</p></li>
+        <li><span class="pipeline-no">5</span><h3>Draw</h3><p>External canvas viewer</p></li>
+      </ol>
+      <div class="implementation-grid"><article><h3>Model & motion</h3><p><em>Load demo</em> sends the URDF to the parameter server and the choreography JSON to <code>/fsm/update_logic</code>. On each state entry, the FSM publishes a target on <code>/joint_trajectory</code>.</p><p>The servo approaches the target using the exact first-order update for a constant target:</p><div class="equation" aria-label="q next equals q plus one minus exponential negative four delta t times q target minus q">q<sub>next</sub> = q + (1 − e<sup>−4Δt</sup>)(q<sub>target</sub> − q)</div><p>It publishes <code>/joint_states</code>. This is a kinematic servo demonstration, not a torque or contact-physics simulation.</p></article>
+      <article><h3>Transforms & rendering</h3><p>The runtime combines each joint’s fixed URDF origin with its current motion. It publishes local transforms on <code>/tf</code> and accumulates them through the tree, with the root’s global pose, to produce <code>/xform_world</code>.</p><p>The viewer is an external TCP/JSON client. A local HTTP bridge forwards the messages to the browser. The canvas renderer reads each link’s column-major 4 × 4 world matrix, applies its URDF visual offset, projects the geometry, and draws depth-sorted faces.</p><p>The viewer receives poses from the runtime; it does not recompute FK. The public page plays the recorded output and needs no running Python server.</p></article></div>
+    </section>
+
+    <footer class="wrap"><div><strong>Haonan Ping</strong><p>ROB 511 · Project 3 · Forward Kinematics · Fall 2026</p></div><div class="footer-right"><p>Custom desk-arm model & choreography.<br>Primitive geometry; no Fetch assets used.</p><a href="https://autorob.org/projects/project3/" target="_blank" rel="noreferrer">Course project brief ↗</a></div></footer>
+  </main>
+</body>
+</html>
